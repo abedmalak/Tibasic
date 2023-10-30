@@ -16,13 +16,16 @@
             // Get user's language
             var language = window.navigator.userLanguage || window.navigator.language;
 
+            // Generate a random number (e.g., between 1 and 1000000)
+            var randomNumber = Math.floor(Math.random() * 1000000) + 1;
+
             v.onload = function() {
                 // Load the Voiceflow chat widget
                 window.voiceflow.chat.load({
                     verify: { projectID: '653a63b7978fad000708df65' },
                     url: 'https://general-runtime.voiceflow.com',
                     versionID: 'production',
-                    userID: `${language}:1`
+                    userID: `${language}:${randomNumber}`
                 }).then(() => {
                     // Open the chat widget as soon as it's loaded
                     window.voiceflow.chat.open();
