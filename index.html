@@ -9,7 +9,13 @@
 
 <body>
 
+    <button onclick="openVoiceflowChat()">Open Chat</button>
+
     <script type="text/javascript">
+        function openVoiceflowChat() {
+            window.voiceflow.chat.open();
+        }
+
         (function(d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
             
@@ -26,13 +32,12 @@
                     url: 'https://general-runtime.voiceflow.com',
                     versionID: 'production',
                     userID: `${language}:${randomNumber}`
-                }).then(() => {
-                    // Open the chat widget as soon as it's loaded
-                    window.voiceflow.chat.open();
                 });
             }
 
-            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+            v.type = "text/javascript";
+            s.parentNode.insertBefore(v, s);
         })(document, 'script');
     </script>
 
