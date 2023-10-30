@@ -9,21 +9,12 @@
 
 <body>
 
-    <button onclick="openVoiceflowChat()">Open Chat</button>
-
     <script type="text/javascript">
-        function openVoiceflowChat() {
-            window.voiceflow.chat.open();
-        }
-
         (function(d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
             
             // Get user's language
             var language = window.navigator.userLanguage || window.navigator.language;
-
-            // Generate a random number (e.g., between 1 and 1000000)
-            var randomNumber = Math.floor(Math.random() * 1000000) + 1;
 
             v.onload = function() {
                 // Load the Voiceflow chat widget
@@ -31,13 +22,14 @@
                     verify: { projectID: '653a63b7978fad000708df65' },
                     url: 'https://general-runtime.voiceflow.com',
                     versionID: 'production',
-                    userID: `${language}:${randomNumber}`
+                    userID: `${language}:1`
+                }).then(() => {
+                    // Open the chat widget as soon as it's loaded
+                    //window.voiceflow.chat.open();
                 });
             }
 
-            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
-            v.type = "text/javascript";
-            s.parentNode.insertBefore(v, s);
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
         })(document, 'script');
     </script>
 
