@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tibyana Medical Labs</title>
 </head>
+
 <body>
 
-<script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '653a63b7978fad000708df65' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            
+            // Get user's language
+            var language = window.navigator.userLanguage || window.navigator.language;
+
+            v.onload = function() {
+                // Load the Voiceflow chat widget
+                window.voiceflow.chat.load({
+                    verify: { projectID: '653a63b7978fad000708df65' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production',
+                    userID: `${language}:1`
+                }).then(() => {
+                    // Open the chat widget as soon as it's loaded
+                    window.voiceflow.chat.open();
+                });
+            }
+
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
 
 </body>
 </html>
